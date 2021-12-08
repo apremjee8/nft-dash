@@ -58,6 +58,8 @@ function App() {
       console.log("White " + whitelisted)
       console.log("Member Price: " + membershipPrice)
       console.log("Discount Price: " + discountedPriced)
+      console.log(ethers.BigNumber.isBigNumber(membershipPrice))
+      console.log(ethers.BigNumber.isBigNumber(discountedPriced))
       
       if (registered) {
         console.log("registered true")
@@ -72,7 +74,7 @@ function App() {
         console.log("new user")
         // const amount = ethers.utils.parseEther("6.0")
         // console.log(amount)
-        const formatted_amount = web3.utils.fromWei(membershipPrice.toString(), "ether")
+        const formatted_amount = web3.utils.fromWei(membershipPrice, "ether")
         console.log(formatted_amount)
         const transaction = await contract.buyMembership({ value: formatted_amount })
         console.log("did it work?" + transaction)
