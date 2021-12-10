@@ -26,15 +26,15 @@ contract BigData{
     // }
     
     // check if whitelist for discounted price vs full price
-    function buyMembership(uint _amount) external payable {
+    function buyMembership() external payable {
         console.log(msg.sender);
         console.log(msg.value);
         require(!registeredUsers[msg.sender], "You're already registered!");
         if(whitelistUsers[msg.sender]) {
-            require(_amount >= discountedPrice, "Price below discounted!");
+            require(msg.value >= discountedPrice, "Price below discounted!");
             registeredUsers[msg.sender] = true;
         } else {
-            require(_amount >= membershipPrice, "Price below membership!");
+            require(msg.value >= membershipPrice, "Price below membership!");
             registeredUsers[msg.sender] = true;
         }    
         
