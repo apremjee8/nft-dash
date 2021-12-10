@@ -34,14 +34,15 @@ export const init = async () => {
 
     const web3 = new Web3(provider);
     
-    bigdataAddress = "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d";
+    bigdataAddress = "0xc5a5C42992dECbae36851359345FE25997F5C42d"; // update contract address here
     contract = new web3.eth.Contract(BigData.abi, bigdataAddress);
     
     membershipPrice = contract.methods.checkMembershipPrice();
     discountedPrice = contract.methods.checkDiscountedPriced();
     // discountedPriced = web3.utils.toBN(discountedPriced);
 
-    amountToSend = web3.utils.toWei("5", "ether");
+    amountToSend = web3.utils.fromWei("5", "ether");
+    // amountToSend = discountedPrice.toString();
 
     isInitialized = true;
 };

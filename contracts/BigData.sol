@@ -52,6 +52,12 @@ contract BigData{
         registeredUsers[_address] = true;
     }
 
+    // remove a membershiper
+    function removeMembership(address _address) public {
+        require(msg.sender == owner, "Only owner can call this!");
+        registeredUsers[_address] = false;
+    }
+
     // remove funds from contract to a given address
     function withdrawFunds(address payable _to) public {
         require(msg.sender == owner, "Only owner can call this!");
